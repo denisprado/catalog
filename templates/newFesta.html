@@ -1,0 +1,46 @@
+{% extends "layout.html" %}
+{% block body %}
+
+    <h1>Nova Festa</h1>
+
+    <div class='pane'>
+        <form action="{{ url_for('newFesta', festa=festa )}}" method='post'>
+
+            <dl>
+                <dt>Nome:</dt>
+                <dd>
+                    <input type='text' size='30' name='name' required>
+                </dd>
+                <dt>Descrição:</dt>
+                <dd>
+                    <textarea name='description' rows='5' cols='40' required></textarea>
+                </dd>
+                <dt>Imagem da Festa
+                </dt>
+                <dd class="card__column">
+
+                        {% for i in fotos %}
+                        <input type="radio" name="foto" class="fotos__item card__item" value="{{i.id}}">
+                            <img src="{{ url_for('uploaded_file', filename=i.foto_caminho) }}" width="25%"></img>
+                        
+                        {% endfor %}
+                        
+                </dd>
+
+                <dt>Valor:</dt>
+                <dd>
+                    <input type='text' size='8' name='price' required>
+                </dd>
+            </dl>
+
+
+            <input type='submit' value='Create'>
+
+        </form>
+    </div>
+{% endblock %}
+
+
+
+
+</html>

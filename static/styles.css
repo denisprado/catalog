@@ -1,0 +1,16 @@
+.card {
+    margin: 0 10rem;
+}
+
+.card__columns {
+    display: grid;
+    grid-gap: 1rem;
+    grid-template-columns: repeat(3, 4fr);
+    grid-template-rows: 25%;
+}
+
+.card__item {
+    border-radius: 10px;
+    border: 0.55px solid lightgray;
+    padding: 10px;
+}

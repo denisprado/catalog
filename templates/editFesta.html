@@ -1,0 +1,46 @@
+<html>
+
+<head>
+    <link rel=stylesheet type=text/css href="{{ url_for('static', filename='styles.css') }}">
+</head>
+
+<body>
+
+    <h1>Editar Festa {{festa.festa_nome }}</h1>
+
+    <form action="{{ url_for('editFesta',id = festa_id)}}" method='post'>
+
+        <dl>
+            <dt>Name:</dt>
+            <dd>
+                <input type='text' size='30' name='name' value='{{festa.festa_nome }}'>
+            </dd>
+            <dt>Description:</dt>
+            <dd>
+                <textarea name='description' rows='5' cols='40' value='{{festa.festa_descr }}' placeholder='{{festa.festa_descr }}'></textarea>
+            </dd>
+            <dd class="card__column">
+
+                    {% for foto in fotos %}
+                        <input type="radio" name="foto" class="fotos__item card__item" value="{{foto.id}}" {% if festa.id == foto.id %}checked{% endif %}>
+                            
+                            <img src="{{ url_for('uploaded_file', filename=foto.foto_caminho) }}" width="25%"></img>
+                    {% endfor %}
+                    
+            </dd>
+
+            <dt>Price:</dt>
+            <dd>
+                <input type='text' size='8' name='price' value='{{festa.festa_valor}}'>
+            </dd>
+
+        </dl>
+
+
+        <input type='submit' value='Edit'>
+
+        <a href='{{url_for('listFesta')}}'> Cancel </a>
+    </form>
+</body>
+
+</html>

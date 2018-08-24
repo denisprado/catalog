@@ -1,0 +1,15 @@
+{% extends "layout.html" %}
+{% block body %}
+    <section class="card">
+        <a href="{{url_for('newFoto')}}">Adicionar Foto</a>
+        <div class="fotos card__columns">
+            {% for i in fotos %}
+            <div class="fotos__item card__item">
+                <img src="{{ url_for('uploaded_file', filename=i.foto_caminho) }}" width="100%"></img>
+                <a href="{{url_for('editFoto', id=i.id)}}">Editar</a>
+                <p>id: {{ i.id }}</p>
+            </div>
+            {% endfor %}
+        </div>
+    </section>
+{% endblock %}

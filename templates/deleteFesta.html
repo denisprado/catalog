@@ -1,0 +1,15 @@
+{% extends "layout.html" %}
+{% block body %}
+    <h1>Realmente que apagar a festa {{festa.nome_festa}}? </h1>
+
+    <form action="{{ url_for('deleteFesta',id = festa.id)}}" method='post'>
+
+        <input type='submit' , value='Delete'>
+
+
+
+
+    </form>
+
+    <a href='{{url_for('listFesta')}}'> Cancel </a>
+{% endblock %}
